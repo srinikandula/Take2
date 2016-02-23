@@ -1,7 +1,7 @@
 /**
  * Created by skandula on 2/22/16.
  */
-public class CollegeOperations {
+/*public class CollegeOperations {
     public static void main(String[] args) {
         StateCollege stateCollege = new StateCollege();
         stateCollege.getCity();
@@ -18,3 +18,4 @@ public class CollegeOperations {
         System.out.println("Type " + College.getType());
     }
 }
+*/

@@ -1,7 +1,7 @@
 /**
  * Created by skandula on 2/22/16.
  */
-public class UniversityCollege extends College {
+/*public class UniversityCollege extends College {
 
     private String nationalId;
 
@@ -12,3 +12,4 @@ public class UniversityCollege extends College {
         nationalId = nationalId;
     }
 }
+*/
