@@ -11,4 +11,9 @@ public class UniversityCollege extends College {
     public void setNationalId(String nationalId){
         nationalId = nationalId;
     }
+
+    @Override
+    public boolean isStudentAvailable(String firstName, String lastName) {
+        return false;
+    }
 }

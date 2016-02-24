@@ -1,4 +1,4 @@
-package com.java;
+package Keerthi;
 
 public class Main {
 
@@ -9,7 +9,7 @@ public class Main {
         System.out.println(emp.employeeDetails(2));
         System.out.println(emp.employeeAddress("keerthi","pathapally")) ;
         MethodOverLoading mol = new MethodOverLoading();
-        System.out.println(emp.isEmployeeAvailable(1));
+        System.out.println(emp.isEmployeeAvailable());
 
         mol.methodOne();
         mol.methodOne("keerthi");
