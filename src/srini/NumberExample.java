@@ -18,5 +18,6 @@ public class NumberExample {
         Integer num = 454;  //auto boxing
         System.out.println(num.byteValue());
 
+        int newNumber = Integer.parseInt("sdfsd");
     }
 }
