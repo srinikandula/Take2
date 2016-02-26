@@ -12,7 +12,7 @@ public class AmarSplitStatement {
 
         for(int i=0; i<originalArray.length; i++) {
 
-            System.out.print(("'" + originalArray[i] + "'" + ", "));
+            System.out.print("'" + originalArray[i] + "'" + ", ");
 
         }
     }
