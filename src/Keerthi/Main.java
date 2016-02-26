@@ -1,4 +1,4 @@
-package Keerthi;
+package keerthi;
 
 public class Main {
 

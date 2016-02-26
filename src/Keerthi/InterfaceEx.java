@@ -1,4 +1,4 @@
-package Keerthi;
+package keerthi;
 
 /**
  * Created by CrazyNaveen on 2/23/16.
