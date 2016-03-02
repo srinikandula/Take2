@@ -22,6 +22,10 @@ public class ToUpperCase {
     }
     public static void main(String[] args) {
         String s1= "hello world";
+
+        //String s2 = s1.toUpperCase();
+        //System.out.println(s2);
+
         String s2 = s1.toUpperCase();
         System.out.println(s2);
         ToUpperCase t = new ToUpperCase();
