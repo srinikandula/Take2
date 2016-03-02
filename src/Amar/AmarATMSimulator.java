@@ -66,9 +66,12 @@ public class AmarATMSimulator {
             //check if the account exists already
             String fileName = "account_"+accountNumber;
             //System.out.println("Checking for file");
-            File accountFile = new File(fileName);
-            if(accountFile.exists()){
-                System.err.println("Account already exists with the number" + accountNumber);
+            File accountFile = new File("C:\\Users\\BMW\\Documents\\GitHub\\Take2\\src\\Amar\\account_"+accountNumber);
+            String P1="C:\\Users\\BMW\\Documents\\GitHub\\Take2\\src\\Amar\\account_"+accountNumber;
+            Path path = Paths.get(P1);
+
+            if(Files.exists(path)){
+                System.err.println("Account already exists with the number " + accountNumber);
             }else {
                 PrintWriter outputStream = new PrintWriter(new FileWriter(accountFile));
                 outputStream.print(accountRecord);
@@ -85,11 +88,14 @@ public class AmarATMSimulator {
         System.out.println("Please enter the account number");
         int accountNumber = scanner.nextInt();
 
-        File accountFile = new File("account_"+accountNumber);
 
+        File accountFile = new File("C:\\Users\\BMW\\Documents\\GitHub\\Take2\\src\\Amar\\account_"+accountNumber);
+        String P1="C:\\Users\\BMW\\Documents\\GitHub\\Take2\\src\\Amar\\account_"+accountNumber;
+        Path path = Paths.get(P1);
         //look up the account file
-        if (accountFile.exists()) {
+        if (Files.exists(path)) {
             try {
+
                 //read data from account file
                 Scanner accountReader = new Scanner(new FileInputStream(accountFile)).useDelimiter("--");
                 String accNum = accountReader.next();
@@ -125,8 +131,10 @@ public class AmarATMSimulator {
         System.out.println("Please enter the account number");
         int accountNumber = scanner.nextInt();
         //look up the account file
-        File accountFile = new File("account_"+accountNumber);
-        if(!accountFile.exists()){
+        File accountFile = new File("C:\\Users\\BMW\\Documents\\GitHub\\Take2\\src\\Amar\\account_"+accountNumber);
+        String P1="C:\\Users\\BMW\\Documents\\GitHub\\Take2\\src\\Amar\\account_"+accountNumber;
+        Path path = Paths.get(P1);
+        if(Files.notExists(path)){
             System.err.println("Account not found for number "+ accountNumber);
         }else {
             try {
@@ -160,8 +168,10 @@ public class AmarATMSimulator {
         Scanner scan = new Scanner(System.in);
         System.out.println("Please enter the account number");
         int accountNumber = scan.nextInt();
-        File accountFile = new File("account_"+accountNumber);
-        if(!accountFile.exists()){
+        File accountFile = new File("C:\\Users\\BMW\\Documents\\GitHub\\Take2\\src\\Amar\\account_"+accountNumber);
+        String P1="C:\\Users\\BMW\\Documents\\GitHub\\Take2\\src\\Amar\\account_"+accountNumber;
+        Path path = Paths.get(P1);
+        if(Files.notExists(path)){
             System.err.println("Account not found for number "+ accountNumber);
         }else {
             try {
@@ -200,8 +210,8 @@ public class AmarATMSimulator {
 
         Scanner s = new Scanner(System.in);
         System.out.println("Please enter folder name ");
-        String fodlerName = s.next();
-        File folder = new File(fodlerName);
+        String folderName = s.next();
+        File folder = new File("C:\\Users\\BMW\\Documents\\GitHub\\Take2\\src\\Amar\\"+ folderName);
         folder.mkdir();
         System.out.println("Folder is created successfully");
         folder.isDirectory();
