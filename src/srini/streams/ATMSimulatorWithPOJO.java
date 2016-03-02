@@ -6,10 +6,10 @@ import java.util.Scanner;
 /**
  * Created by skandula on 2/29/16.
  */
-public class ATMSimulator {
+public class ATMSimulatorWithPOJO {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
-        ATMSimulator api = new ATMSimulator();
+        ATMSimulatorWithPOJO api = new ATMSimulatorWithPOJO();
         int option = 0;
         do{
             System.out.println("Please make your selection");
@@ -56,28 +56,31 @@ public class ATMSimulator {
         Scanner scanner = new Scanner(System.in);
 
         try {
+            Account account = new Account();
             System.out.println("Please enter the account number");
-            int accountNumber = scanner.nextInt();
-            System.out.println("Please enter the account name");
-            String name = scanner.nextLine();
+            account.setAccNum(scanner.nextInt());
+            System.out.println("Please enter the first name");
+            account.setFirstName(scanner.next());
+            System.out.println("Please enter the last name");
+            account.setLastName(scanner.next());
+
             System.out.println("Please enter the account balance");
-            int accountBalance = scanner.nextInt();
-
-            //accountnumber--accountname--balance
-            String accountRecord = String.format("%d--%s--%d", accountNumber,name, accountBalance);
-
+            account.setBalance(scanner.nextInt());
+            System.out.println("Please enter SSN");
+            account.setSsn(scanner.nextInt());
             //check if the account exists already
-            String fileName = "account_"+accountNumber;
+            String fileName = "account_"+account.getAccNum();
             System.out.println("Checking for file");
             File accountFile = new File(fileName);
 
             if(accountFile.exists()){
-                System.err.println("Account already exists with the number" + accountNumber);
+                System.err.println("Account already exists with the number" + account.getAccNum());
             }else {
-                PrintWriter outputStream = new PrintWriter(new FileWriter(accountFile));
-                outputStream.print(accountRecord);
+                ObjectOutputStream objectOutputStream =
+                        new ObjectOutputStream(new FileOutputStream(accountFile));
+                objectOutputStream.writeObject(account);
                 System.out.println("Account is created successfully");
-                outputStream.close();
+                objectOutputStream.close();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -95,13 +98,19 @@ public class ATMSimulator {
         }else {
             try {
                 //read data from account file
-                Scanner accountReader = new Scanner(new FileInputStream(accountFile)).useDelimiter("--");
-                String accNum = accountReader.next();
-                String name = accountReader.next();
-                String balance = accountReader.next();
-                System.out.println("Account balance is "+ balance);
-                accountReader.close();
+                ObjectInputStream objectInputStream =
+                        new ObjectInputStream(new FileInputStream(accountFile));
+                Account account = (Account) objectInputStream.readObject();
+
+                System.out.println("Account balance is "+ account.getBalance());
+                System.out.println("SSN found on account is  "+ account.getSsn());
+
+                objectInputStream.close();
             } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
