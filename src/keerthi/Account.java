@@ -1,10 +1,8 @@
-package keerthi;
+package Keerthi;
 
 import java.io.Serializable;
 
-/**
- * Created by CrazyNaveen on 3/2/16.
- */
+
 public class Account implements Serializable{
     private String firstName;
     private long accNum;

@@ -1,4 +1,4 @@
-    package keerthi;
+    package Keerthi;
 
     import java.io.*;
     import java.util.Scanner;
