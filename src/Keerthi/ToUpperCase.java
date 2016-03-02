@@ -22,13 +22,12 @@ public class ToUpperCase {
     }
     public static void main(String[] args) {
         String s1= "hello world";
-<<<<<<< HEAD
+
         //String s2 = s1.toUpperCase();
         //System.out.println(s2);
-=======
+
         String s2 = s1.toUpperCase();
         System.out.println(s2);
->>>>>>> e764153dbc6b22df9ea4c3955adc62b8292a2e38
         ToUpperCase t = new ToUpperCase();
         t.convertToUpperCase();
     }
