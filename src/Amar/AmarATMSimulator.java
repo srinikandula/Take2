@@ -117,8 +117,10 @@ public class AmarATMSimulator {
         System.out.println("Please enter the account number");
         int accountNumber = scanner.nextInt();
         //look up the account file
-        File accountFile = new File("account_"+accountNumber);
-        if(!accountFile.exists()){
+        File accountFile = new File("C:\\Users\\BMW\\Documents\\GitHub\\Take2\\src\\Amar\\account_"+accountNumber);
+        String P1="C:\\Users\\BMW\\Documents\\GitHub\\Take2\\src\\Amar\\account_"+accountNumber;
+        Path path = Paths.get(P1);
+        if(Files.notExists(path)){
             System.err.println("Account not found for number "+ accountNumber);
         }else {
             accountFile.delete();
