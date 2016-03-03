@@ -193,14 +193,19 @@ public class AtmMachine {
                 Scanner scanner1 = new Scanner(System.in);
                 System.out.println("please enter the amount you would like to withdraw");
                 int amount1 = scanner1.nextInt();
-                balance = balance - amount1;
-                System.out.println("The Current balance is " + balance);
-                PrintWriter outputStream = new PrintWriter(new FileWriter(accountFile));
-                outputStream.printf("%d--%s--%d", accountNumber, name, balance);
-                System.out.println("Balance updated successfully");
-                outputStream.close();
-                System.out.println("Account balance after Deposit is: "+ balance);
-                accountReader.close();
+                if(amount1 > balance){
+                    System.err.println("Please enter the amount within the balance range");
+                    return;
+                }else {
+                    balance = balance - amount1;
+                    System.out.println("The Current balance is " + balance);
+                    PrintWriter outputStream = new PrintWriter(new FileWriter(accountFile));
+                    outputStream.printf("%d--%s--%d", accountNumber, name, balance);
+                    System.out.println("Balance updated successfully");
+                    outputStream.close();
+                    System.out.println("Account balance after Deposit is: " + balance);
+                    accountReader.close();
+                }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
