@@ -61,5 +61,7 @@ public class Account implements Serializable{
     public void setBalance(double balance) {
         this.balance = balance;
     }
-
+    public Account(int accountNumber){
+        this.accNum = accountNumber;
+    }
 }
