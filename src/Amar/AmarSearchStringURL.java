@@ -22,16 +22,17 @@ public class AmarSearchStringURL {
             BufferedReader in = new BufferedReader(new InputStreamReader(oracle.openStream()));
 
             String inputLine;
-            if ((inputLine = in.readLine()) != null && (inputLine.startsWith("To"))){
-                //inputLine.contains("A");
-                try {
-                    System.out.println(inputLine);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
 
-            System.out.println(inputLine);
+            while ((inputLine = in.readLine()) != null )
+                //inputLine.contains("A");
+                if (inputLine.contains("A")) {
+                    try {
+                        System.out.println(inputLine);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
             in.close();
 
 
