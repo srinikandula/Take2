@@ -64,8 +64,17 @@ public class Account implements Serializable{
     public void setBalance(double balance) {
         this.balance = balance;
     }
+
     public Account(int accountNumber){
         this.accNum = accountNumber;
     }
 
+<<<<<<< HEAD
+=======
+    //default constructor
+    public Account(){
+
+    }
+
+>>>>>>> 885f664d963148596f54c378aa185954e7be7194
 }
