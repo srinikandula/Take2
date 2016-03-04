@@ -62,8 +62,15 @@
                 account.setAccType(scanner.next());
                 System.out.println("Enter your initial amount");
                 account.setAmount(scanner.nextInt());
-                accounts.put(accountNumber,account);//account number and account class object as key and value
-                System.out.println("Account is created successfully");
+                long accNum = account.getAccNum();
+                if(accounts.containsKey(accNum)){
+                    System.out.println("account already exists... Account creation failed..");
+                }
+                else{
+                    accounts.put(accountNumber,account);//account number and account class object as key and value
+                    System.out.println("Account is created successfully");
+                }
+
             }
 
             public void findBalance(){
