@@ -94,9 +94,9 @@ public class ATMSimulatorWithList {
         }
 
         //JDK 8
-        accounts.stream().filter(a -> a.getAccNum() == accountNumber).forEach(acc -> {
+       /* accounts.stream().filter(a -> a.getAccNum() == accountNumber).forEach(acc -> {
             System.out.println(acc.getBalance());
-        });
+        });*/
         /*
         //JDK 8
         List<Account> filteredAccounts = accounts.stream().filter(a -> a.getBalance() > 1000).collect(Collectors.toList());

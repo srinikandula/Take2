@@ -11,8 +11,6 @@ public class Account implements Serializable{
     private String accountType;
     private long accNum;
 
-    public Account(){
-    }
 
     public long getSsn() {
         return ssn;
@@ -69,12 +67,10 @@ public class Account implements Serializable{
         this.accNum = accountNumber;
     }
 
-<<<<<<< HEAD
-=======
+
     //default constructor
     public Account(){
 
     }
 
->>>>>>> 885f664d963148596f54c378aa185954e7be7194
 }

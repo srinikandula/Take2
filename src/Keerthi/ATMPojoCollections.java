@@ -142,14 +142,31 @@
             Scanner sc = new Scanner(System.in);
             System.out.println("Enter your account number");
             long accNumber = sc.nextLong();
+            int removeAccount = 0;
             for(int i=0; i<arrayList.size(); i++){
                Account account = arrayList.get(i);
                 if(account.getAccNum() == accNumber){
-                    arrayList.remove(account);
-                    System.out.println("Account is deleted successfully");
+                    removeAccount = i;
+                    break;
                 }
             }
+            arrayList.remove(removeAccount);
+            System.out.println("Account is deleted successfully");
+
+             /*Iterator iterator = arrayList.iterator();
+               while (iterator.hasNext()){
+                    Account account = (Account) iterator.next();
+                    if(account.getAccNum() == accNumber){
+                        iterator.remove();
+                        break;
+                    }
+                    //System.out.println("Account is deleted successfully");
+                }*/
+
+
+
         }
+
 
         public void createFolder(){
             Scanner sc = new Scanner(System.in);

@@ -9,7 +9,7 @@ import java.util.*;
  * Created by skandula on 2/29/16.
  */
 public class ATMSimulatorWithMap {
-    private Map<Long, Account> accounts = new HashMap<>();
+    private Map<Long, Account> accounts = new HashMap<Long, Account>();
 
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
