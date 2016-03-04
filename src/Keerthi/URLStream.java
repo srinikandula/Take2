@@ -16,8 +16,13 @@
             URL urlStream = null;
             try {
                 urlStream = new URL("http://angular.github.io/protractor/#/getting-started");
+<<<<<<< HEAD
                 BufferedReader in = new BufferedReader(new InputStreamReader(urlStream.openStream()));
 
+=======
+                try {
+                    BufferedReader in = new BufferedReader(new InputStreamReader(urlStream.openStream()));
+>>>>>>> 0e82abb7c1afed99d29844da9d528bd89f33d81d
                     String inputLine;
                     while ((inputLine = in.readLine()) != null) {
                         if (inputLine.contains("AngularJS")) {
@@ -26,13 +31,18 @@
                     }
                     in.close();
 
+<<<<<<< HEAD
+=======
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+>>>>>>> 0e82abb7c1afed99d29844da9d528bd89f33d81d
+
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-
-
         }
     }
+

@@ -9,6 +9,7 @@ import java.util.LinkedList;
  * Created by skandula on 3/2/16.
  */
 public class Bank {
+
     public static void main(String[] args) {
          int[] accounts = new int[10];
          Account[] accs = new Account[10000];
