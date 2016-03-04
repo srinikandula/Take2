@@ -9,6 +9,15 @@ public class Account implements Serializable{
     private String lastName;
     private int amount;
     private String accType;
+    private  String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getFirstName() {
         return firstName;

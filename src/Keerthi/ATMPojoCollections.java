@@ -1,5 +1,5 @@
 
-    package keerthi;
+    package Keerthi;
 
     import java.io.File;
     import java.util.ArrayList;
