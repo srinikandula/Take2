@@ -1,4 +1,4 @@
-    package keerthi;
+    package Keerthi;
 
 
     import java.io.BufferedReader;
@@ -16,7 +16,8 @@
             URL urlStream = null;
             try {
                 urlStream = new URL("http://angular.github.io/protractor/#/getting-started");
-                try (BufferedReader in = new BufferedReader(new InputStreamReader(urlStream.openStream()))) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(urlStream.openStream()));
+
                     String inputLine;
                     while ((inputLine = in.readLine()) != null) {
                         if (inputLine.contains("AngularJS")) {
@@ -24,7 +25,7 @@
                         }
                     }
                     in.close();
-                }
+
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
