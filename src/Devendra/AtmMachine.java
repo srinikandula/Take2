@@ -1,4 +1,4 @@
-package StreamsExamples;
+package Devendra;
 
 import java.io.*;
 import java.util.Scanner;

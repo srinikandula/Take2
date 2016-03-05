@@ -1,5 +1,4 @@
-package com.stringexamples;
-
+package Devendra;
 /**
  * Created by devendra on 2/24/2016.
  */
