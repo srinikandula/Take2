@@ -10,7 +10,8 @@ public class Account implements Serializable,Comparable<Account>{
     private String lastName;
     private String accountType;
     private long accNum;
-
+    private transient long ssn;
+    private double balance;
 
     public long getSsn() {
         return ssn;
@@ -19,9 +20,6 @@ public class Account implements Serializable,Comparable<Account>{
     public void setSsn(long ssn) {
         this.ssn = ssn;
     }
-
-    private transient long ssn;
-    private double balance;
 
     public long getAccNum() {
         return accNum;
@@ -123,6 +121,7 @@ public class Account implements Serializable,Comparable<Account>{
         } else {
             return -1;
         }*/
+        System.out.println(" in compareto()");
         if(this.getBalance() == toBeCompared.getBalance()){
             if(this.getAccNum() == toBeCompared.getAccNum()){
                 return 0;
@@ -136,6 +135,28 @@ public class Account implements Serializable,Comparable<Account>{
         } else {
             return -1;
         }
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        System.out.println("in equals()");
+        if(obj == null){
+            return false;
+        }
+        if(this == obj){
+            return true;
+        }
+        //check if the object is of type Account.class.
+        if(obj instanceof Account){
+            Account copy = (Account)obj;
+            System.out.println("Comparing " + this.getAccNum() +" and "+ copy.getAccNum());
+            if(copy.getAccNum() == this.getAccNum() ){
+                return true;
+            }else{
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 }
