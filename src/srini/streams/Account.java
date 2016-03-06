@@ -159,4 +159,9 @@ public class Account implements Serializable,Comparable<Account>{
             return false;
         }
     }
+
+    @Override
+    public int hashCode() {
+        return (int)this.accNum;
+    }
 }
