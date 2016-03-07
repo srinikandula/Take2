@@ -1,4 +1,4 @@
-package srini;
+package srini.collections;
 
 import srini.streams.Account;
 

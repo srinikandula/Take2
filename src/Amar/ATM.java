@@ -15,8 +15,8 @@ public class ATM {
         for (int i = 0; i < 10; i++) {
             AccountForPOJO account = new AccountForPOJO();
 
-            account.setId(new Double(Math.random() * 1000).longValue());
-            account.setBalance(new Double(Math.random() * 1000).longValue());
+            account.setId(new Double(Math.random() * 10).longValue());
+            account.setBalance(new Double(Math.random() * 10).longValue());
 
 
             accounts.add(account);
