@@ -132,6 +132,8 @@ public class AmarATMSimulatorWithMap {
             } else {
                 System.err.println("Account not found");
             }
+        }catch (InputMismatchException e){
+            e.printStackTrace();
         }catch (NullPointerException e){
             e.printStackTrace();
         }catch (Exception e){
@@ -158,6 +160,8 @@ public class AmarATMSimulatorWithMap {
             }else {
                 System.err.println("Account does not exixts");
             }
+        }catch (InputMismatchException e){
+            e.printStackTrace();
         }catch (NullPointerException e){
             e.printStackTrace();
         }catch (Exception e){
@@ -182,6 +186,8 @@ public class AmarATMSimulatorWithMap {
                 System.out.println("Account is updated successfully");
                 System.out.println("Account balance after Withdrawal is: "+ account.getBalance());
             }
+        }catch (InputMismatchException e){
+            e.printStackTrace();
         }catch (NullPointerException e){
             e.printStackTrace();
         }catch (Exception e){
@@ -199,11 +205,13 @@ public class AmarATMSimulatorWithMap {
             for (Map.Entry<Long, AmarAccountForCollection> temp : actHash.entrySet()) {
 
                 System.out.println("Account details : " + i + " key = " + temp.getKey()+", First Name=" + account.getFirstName() + ", Balance=" + account.getBalance() + ", value=" + temp.getValue());
-                
+
                 i = i + 1;
 
             }
             //System.out.println(actHash.get(100));
+        }catch (InputMismatchException e){
+            e.printStackTrace();
         }catch (IndexOutOfBoundsException e){
             e.printStackTrace();
         }
