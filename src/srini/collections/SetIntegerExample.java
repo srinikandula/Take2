@@ -10,7 +10,7 @@ import java.util.Set;
  */
 public class SetIntegerExample {
     public static void main(String[] args) {
-        Set<Integer> numbers = new HashSet<>();
+        Set<Integer> numbers = new HashSet();
         for(int i=0;i<10;i++){
             numbers.add(new Integer(i));
         }

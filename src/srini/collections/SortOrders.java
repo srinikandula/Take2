@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class SortOrders {
     public static void main(String[] args) {
-        List<Order> orders = new ArrayList<>();
+        List<Order> orders = new ArrayList();
         for(int i=0;i<10;i++){
             Order order = new Order();
             order.setOrderId(new Double(Math.random() * 100).intValue());

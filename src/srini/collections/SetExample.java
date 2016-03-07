@@ -10,7 +10,7 @@ import java.util.Set;
  */
 public class SetExample {
     public static void main(String[] args) {
-        Set<Account> accounts = new HashSet<>();
+        Set<Account> accounts = new HashSet();
         for(int i=0;i<10;i++){
             Account account = new Account();
             account.setAccNum(new Long(i));
