@@ -10,12 +10,12 @@ import java.util.Set;
  */
 public class SetExample {
     public static void main(String[] args) {
-<<<<<<< HEAD
-        Set<Account> accounts = new HashSet();
-=======
-        Set<Account> accounts = new HashSet<>();
 
->>>>>>> b0ec09d77b4885d3937cdd646abd87041ac6b03a
+        Set<Account> accounts = new HashSet();
+
+
+
+
         for(int i=0;i<10;i++){
             Account account = new Account();
             account.setAccNum(new Long(i));
