@@ -16,7 +16,7 @@ public class AtmUpdate {
         try {
             Class.forName("org.postgresql.Driver");
             Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/workshop","postgres", "keerthi");
-             preparedStatement = conn.prepareStatement("INSERT INTO " +
+            preparedStatement = conn.prepareStatement("INSERT INTO " +
                     "Atm(id,name,acc_num,balance)VALUES(?,?,?,?) ");
             System.out.println("Enter id");
             int id = scanner.nextInt();
@@ -76,6 +76,20 @@ public class AtmUpdate {
                 System.out.println(rs.getInt(4));
                 System.out.println("Data is successfully retrieved using  where clause....");
             }
+
+            preparedStatement = conn.prepareStatement("DELETE from Atm where id = ?");
+            System.out.println("Enter id of record to be deleted");
+            int deleteId = scanner.nextInt();
+            preparedStatement.setInt(1, deleteId);
+            int deleteStatus = preparedStatement.executeUpdate();
+            System.out.println("Record is deleted successfully..." +deleteStatus);
+
+            preparedStatement = conn.prepareStatement("SELECT * FROM Atm");
+            rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                System.out.println(rs.getInt(1)+"  "+rs.getString(2)+ "  "+rs.getInt(3)+ "  "+ rs.getInt(4));
+            }
+            System.out.println("Records after deleting a record with id "+deleteId );
 
             rs.close();
             preparedStatement.close();
