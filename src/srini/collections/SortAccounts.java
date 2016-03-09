@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class SortAccounts {
     public static void main(String[] args) {
-        List<Account> accounts = new ArrayList<>();
+        List<Account> accounts = new ArrayList();
         for(int i=0; i<10;i++){
             Account account = new Account();
             account.setAccNum(new Double(Math.random()*1000).longValue());
@@ -27,7 +27,6 @@ public class SortAccounts {
         for(Account account:accounts){
             System.out.println(account.getAccNum() +"  "+ account.getFirstName());
         }
-
         /*
         for (int i = 0; i < accounts.size(); i++) {
 

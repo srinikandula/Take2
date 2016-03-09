@@ -10,8 +10,8 @@ import java.util.List;
  */
 public class ContainsExample {
     public static void main(String[] args) {
-        List<Integer> list = new ArrayList<>();
-        List<Account> accounts = new ArrayList<>();
+        List<Integer> list = new ArrayList();
+        List<Account> accounts = new ArrayList();
         for(int i=0;i<10;i++){
             list.add(i);
             Account account = new Account();
