@@ -26,8 +26,9 @@
                     System.out.println("3. Insert into a record");
                     System.out.println("4. Deposit the amount");
                     System.out.println("5. Withdraw amount");
-                    System.out.println("6. Delete a record");
-                    System.out.println("7. Exit");
+                    System.out.println("6. Check Balance");
+                    System.out.println("7. Delete a record");
+                    System.out.println("8. Exit");
                     option = scanner.nextInt();
                     switch (option) {
                         case 1:
@@ -46,9 +47,12 @@
                             atm.toWithdraw();
                             break;
                         case 6:
-                            atm.toDelete();
+                            atm.checkBalance();
                             break;
                         case 7:
+                            atm.toDelete();
+                            break;
+                        case 8:
                             System.out.println("Thanks for using our Atm..:)");
                             System.exit(1);
                         default:
@@ -59,12 +63,12 @@
             }
 
             public void toRead() {
-               Scanner scanner = new Scanner(System.in);
+                Scanner scanner = new Scanner(System.in);
                 PreparedStatement preparedStatement = null;
                 ResultSet rs = null;
                 Connection conn = null;
                 try {
-                   Class.forName("org.postgresql.Driver");
+                    Class.forName("org.postgresql.Driver");
                     conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/workshop", "postgres", "keerthi");
                     preparedStatement = conn.prepareStatement("SELECT  * FROM Atm");
                     rs = preparedStatement.executeQuery();
@@ -141,7 +145,7 @@
                 Scanner scanner = new Scanner(System.in);
                 PreparedStatement preparedStatement = null;
                 ResultSet rs = null;
-                Connection conn ;
+                Connection conn;
                 try {
                     Class.forName("org.postgresql.Driver");
                     conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/workshop", "postgres", "keerthi");
@@ -184,7 +188,7 @@
                 Scanner scanner = new Scanner(System.in);
                 PreparedStatement preparedStatement = null;
                 ResultSet rs = null;
-                Connection conn ;
+                Connection conn;
                 try {
                     Class.forName("org.postgresql.Driver");
                     conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/workshop", "postgres", "keerthi");
@@ -226,78 +230,77 @@
             }
 
 
+            public void toDeposit() {
+                Scanner scanner = new Scanner(System.in);
+                PreparedStatement preparedStatement = null;
+                ResultSet rs;
+                Connection conn;
+                try {
+                    Class.forName("org.postgresql.Driver");
+                    conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/workshop", "postgres", "keerthi");
+                    preparedStatement = conn.prepareStatement("SELECT * FROM Atm WHERE acc_num = ?");
+                    System.out.println("Enter your account number");
+                    int accNum = scanner.nextInt();
+                    preparedStatement.setInt(1, accNum);
+                    rs = preparedStatement.executeQuery();
+                    int balance;
+                    int initialAmount = 0;
+                    if ((!rs.next())) {
+                        System.err.println("Account number is invalid");
+                    } else {
+                        do {
+                            initialAmount = rs.getInt(4);
+                            System.out.println("in while " + initialAmount);
+                        }
+                        while (rs.next());
+                        System.out.println(" out of while loop" + initialAmount);
+                        System.out.println("Enter your amount to be deposited...");
+                        balance = scanner.nextInt();
+                        initialAmount = initialAmount + balance;
+                        System.out.println("balance.... " + initialAmount);
+                    }
+                    preparedStatement = conn.prepareStatement("UPDATE Atm set balance = ? WHERE acc_num = ?");
+                    System.out.println("Enter your account number");
+                    int accountNumber = scanner.nextInt();
+                    preparedStatement.setInt(1, initialAmount);
+                    preparedStatement.setInt(2, accountNumber);
+                    System.out.println(initialAmount);
+                    int res = preparedStatement.executeUpdate();
+                    System.out.println("status of updating records... " + res);
 
-          public void toDeposit() {
-              Scanner scanner = new Scanner(System.in);
-              PreparedStatement preparedStatement = null;
-              ResultSet rs;
-              Connection conn;
-              try {
-                  Class.forName("org.postgresql.Driver");
-                  conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/workshop", "postgres", "keerthi");
-                  preparedStatement = conn.prepareStatement("SELECT * FROM Atm WHERE acc_num = ?");
-                  System.out.println("Enter your account number");
-                  int accNum = scanner.nextInt();
-                  preparedStatement.setInt(1, accNum);
-                  rs = preparedStatement.executeQuery();
-                  int balance;
-                  int initialAmount = 0;
-                  if ((!rs.next())) {
-                      System.err.println("Account number is invalid");
-                  } else {
-                      do{
-                          initialAmount = rs.getInt(4);
-                          System.out.println("in while " +initialAmount);
-                      }
-                      while (rs.next());
-                      System.out.println(" out of while loop" +initialAmount);
-                      System.out.println("Enter your amount to be deposited...");
-                      balance = scanner.nextInt();
-                      initialAmount = initialAmount + balance;
-                      System.out.println("balance.... "+initialAmount);
-                  }
-                      preparedStatement = conn.prepareStatement("UPDATE Atm set balance = ? WHERE acc_num = ?");
-                      System.out.println("Enter your account number");
-                      int accountNumber = scanner.nextInt();
-                      preparedStatement.setInt(1, initialAmount);
-                      preparedStatement.setInt(2, accountNumber);
-                      System.out.println(initialAmount);
-                      int res = preparedStatement.executeUpdate();
-                      System.out.println("status of updating records... " + res);
+                    preparedStatement = conn.prepareStatement("SELECT * FROM Atm where acc_num = ?");
+                    System.out.println("Enter your account number");
+                    int accNumber = scanner.nextInt();
+                    preparedStatement.setInt(1, accNumber);
+                    rs = preparedStatement.executeQuery();
+                    while (rs.next()) {
+                        System.out.println("id is " + " " + rs.getInt(1));
+                        System.out.println("name is " + " " + rs.getString(2));
+                        System.out.println("account number is " + " " + rs.getInt(3));
+                        System.out.println("balance is" + " " + rs.getInt(4));
+                    }
+                    rs.close();
+                    preparedStatement.close();
+                    conn.close();
 
-                      preparedStatement = conn.prepareStatement("SELECT * FROM Atm where acc_num = ?");
-                      System.out.println("Enter your account number");
-                      int accNumber = scanner.nextInt();
-                      preparedStatement.setInt(1, accNumber);
-                      rs = preparedStatement.executeQuery();
-                      while (rs.next()) {
-                          System.out.println("id is " + " " + rs.getInt(1));
-                          System.out.println("name is " + " " + rs.getString(2));
-                          System.out.println("account number is " + " " + rs.getInt(3));
-                          System.out.println("balance is" + " " + rs.getInt(4));
-                      }
-                      rs.close();
-                      preparedStatement.close();
-                      conn.close();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        if (!(preparedStatement.isClosed())) {
+                            preparedStatement.close();
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
 
-                  }catch(ClassNotFoundException e){
-                      e.printStackTrace();
-                  }catch(SQLException e){
-                      e.printStackTrace();
-                  }finally{
-                      try {
-                          if (!(preparedStatement.isClosed())) {
-                              preparedStatement.close();
-                          }
-                      } catch (SQLException e) {
-                          e.printStackTrace();
-                      }
-                  }
-
-              }
+            }
 
 
-            public void toWithdraw(){
+            public void toWithdraw() {
                 Scanner scanner = new Scanner(System.in);
                 PreparedStatement preparedStatement = null;
                 ResultSet rs;
@@ -317,20 +320,19 @@
                         System.err.println("Account number is invalid");
                         return;
                     } else {
-                        do{
+                        do {
                             initialAmount = rs.getInt(4);
-                             System.out.println(" inside while loop" +initialAmount);
+                            System.out.println(" inside while loop" + initialAmount);
                         }
                         while (rs.next());
 
                         System.out.println("Enter your amount to be withdraw...");
 
                         balance = scanner.nextInt();
-                        if(balance > initialAmount) {
-                            initialAmount = balance;
-                            System.err.println("withdraw balance should be less than initial amount");
-                        }
-                        else{
+                        if (balance > initialAmount) {
+                            balance = initialAmount;
+                            System.err.println("withdraw balance should be less than available amount " + balance);
+                        } else {
                             initialAmount = initialAmount - balance;
                         }
                     }
@@ -357,11 +359,11 @@
                     preparedStatement.close();
                     conn.close();
 
-                }catch(ClassNotFoundException e){
+                } catch (ClassNotFoundException e) {
                     e.printStackTrace();
-                }catch(SQLException e){
+                } catch (SQLException e) {
                     e.printStackTrace();
-                }finally{
+                } finally {
                     try {
                         if (!(preparedStatement.isClosed())) {
                             preparedStatement.close();
@@ -375,7 +377,51 @@
             }
 
 
+            public void checkBalance() {
+                Scanner scanner = new Scanner(System.in);
+                PreparedStatement preparedStatement = null;
+                ResultSet rs = null;
+                Connection conn;
+                try {
+                    Class.forName("org.postgresql.Driver");
+                    conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/workshop", "postgres", "keerthi");
+                    preparedStatement = conn.prepareStatement("SELECT  balance from Atm WHERE  acc_num = ?");
+                    System.out.println("Enter your account number");
+                    int accountNumber = scanner.nextInt();
+                    preparedStatement.setInt(1, accountNumber);
+                    rs = preparedStatement.executeQuery();
+                    while (rs.next()) {
+                        String balance = rs.getString("balance");
+                        System.out.println("Available balance in your account " + accountNumber + " is " +" " +balance);
+                    }
+                    rs.close();
+                    preparedStatement.close();
+                    conn.close();
+
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        if (!(rs.isClosed())) {
+                            rs.close();
+                        }
+                        if (!(preparedStatement.isClosed())) {
+                            preparedStatement.close();
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+            }
         }
+
+
+
+
 
 
 
