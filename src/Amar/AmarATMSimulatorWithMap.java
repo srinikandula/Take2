@@ -1,7 +1,5 @@
 package Amar;
 
-//import srini.streams.Account;
-
 import java.io.File;
 import java.util.HashMap;
 import java.util.InputMismatchException;
@@ -9,7 +7,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * Created by BMW on 3/4/2016.
+ * Created by Amar on 3/4/2016.
  */
 public class AmarATMSimulatorWithMap {
     private Map<Long, AmarAccountForCollection> actHash = new HashMap<>();
